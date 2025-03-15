@@ -9,7 +9,11 @@ const cloudinary = require("cloudinary").v2;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: "*",  // Permitir todas las conexiones
+    methods: ["GET", "POST", "DELETE"],
+    allowedHeaders: ["Content-Type"]
+}));
 
 // Configurar Cloudinary
 cloudinary.config({
